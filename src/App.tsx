@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { createGlobalStyle } from "styled-components";
+import { DisplayReadme, MainComponent } from "./components";
+
+const GlobalStyle = createGlobalStyle`
+    :root{
+        --colorPrimary: #667eea;
+        --colorSecondary: #656466;
+        --colorWhite: #FCFCFC;
+        --colorDark: #424A4F;
+    }
+  body{
+    font-family: 'Epilogue', sans-serif;
+  }
+  #root{
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to left, #667eeaab, #764ba299);
+    display: flex;
+    place-content: center;
+    place-items: center;
+   
+  }
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [showReadme, setShowReadme] = useState({
+      shouldShowReadme: false,
+      user: '',
+      repoName: ''
+    });
+    return (
+        <>
+            <GlobalStyle />
+            {showReadme.shouldShowReadme ? <DisplayReadme showReadme={showReadme} setShowReadme={setShowReadme} /> : <MainComponent setShowReadme={setShowReadme} />}
+        </>
+    );
 }
 
 export default App;
