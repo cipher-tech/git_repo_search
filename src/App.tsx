@@ -26,14 +26,21 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
     const [showReadme, setShowReadme] = useState({
-      shouldShowReadme: false,
-      user: '',
-      repoName: ''
+        shouldShowReadme: false,
+        user: "",
+        repoName: "",
     });
     return (
         <>
             <GlobalStyle />
-            {showReadme.shouldShowReadme ? <DisplayReadme showReadme={showReadme} setShowReadme={setShowReadme} /> : <MainComponent setShowReadme={setShowReadme} />}
+            {showReadme.shouldShowReadme ? (
+                <DisplayReadme
+                    showReadme={showReadme}
+                    setShowReadme={setShowReadme}
+                />
+            ) : (
+                <MainComponent setShowReadme={setShowReadme} />
+            )}
         </>
     );
 }

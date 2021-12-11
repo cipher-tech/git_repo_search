@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RepoCard } from ".";
+import { ContentRightSide, RepoCard } from ".";
 import axios from "axios";
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../assets/images/svg/searchIcon.svg";
@@ -32,6 +32,16 @@ const Container = styled.div`
         max-height: 100vh;
         &-header {
             color: var(--colorPrimary);
+            margin: 0.5rem 0;
+        }
+        &-text {
+            color: var(--colorSecondary);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        &-text-sub {
+            color: var(--colorSecondary);
+            margin: 0.7rem 0;
         }
         &-searchBar {
             display: flex;
@@ -46,13 +56,15 @@ const Container = styled.div`
                 justify-content: space-between;
                 align-content: center;
                 align-items: center;
+                flex-wrap: wrap;
                 &--icon {
                     height: 1.5rem;
                     margin-right: 0.3rem;
                     color: var(--colorPrimary);
                 }
                 &--input {
-                    width: 100%;
+                    /* width: 100%; */
+                    flex: 1;
                     border: none;
                     background-color: none;
                     font-size: 1.5rem;
@@ -65,6 +77,8 @@ const Container = styled.div`
                     }
                 }
                 &--button {
+                    display: flex;
+                    flex-wrap: nowrap;
                     border: none;
                     border-radius: 5px;
                     background-image: linear-gradient(
@@ -119,12 +133,6 @@ const Container = styled.div`
             overflow-y: scroll;
         }
     }
-    .rightSideBar {
-        background: rgba(255, 255, 255, 0.05);
-        @media only screen and (max-width: 900px) {
-            display: none;
-        }
-    }
 `;
 
 interface IProps {
@@ -160,6 +168,12 @@ export const MainComponent = ({ setShowReadme }: IProps) => {
             <div className="leftSideBar"></div>
             <div className="main">
                 <h2 className="main-header">Welcome To Git Search</h2>
+                <p className="main-text">
+                    The search platform you've been looking for
+                </p>
+                <p className="main-text-sub">
+                    All-in-one, lightning fast, Full control
+                </p>
                 <div className="main-searchBar">
                     <div className="main-searchBar__inputDiv">
                         <SearchIcon className="main-searchBar__inputDiv--icon" />
@@ -179,7 +193,7 @@ export const MainComponent = ({ setShowReadme }: IProps) => {
                             onClick={handleSearch}
                             className="main-searchBar__inputDiv--button"
                         >
-                            Submit
+                            Try it
                         </button>
                     </div>
                     <p className="main-searchBar__info">
@@ -207,7 +221,7 @@ export const MainComponent = ({ setShowReadme }: IProps) => {
                     </div>
                 </div>
             </div>
-            <div className="rightSideBar"></div>
+            {repos.length > 0 ? <ContentRightSide /> : null}
         </Container>
     );
 };
