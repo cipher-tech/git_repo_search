@@ -1,6 +1,11 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and written in typescript.
+This project is about getting git repository information from user input.
+It has features like:
+- Glass-morphism
+- Typescript
+- Remote API calls, etc.
 
 ## Available Scripts
 
