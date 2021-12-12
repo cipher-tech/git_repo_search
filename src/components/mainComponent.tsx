@@ -68,6 +68,13 @@ const Container = styled.div`
                     border: none;
                     background-color: none;
                     font-size: 1.5rem;
+                    margin: .5rem;
+                    @media only screen and (max-width: 500px) {
+                        font-size: 1rem;
+                    }
+                    @media only screen and (max-width: 300px) {
+                        font-size: .7rem;
+                    }
                     :focus {
                         outline: none;
                         border: none;
@@ -81,6 +88,8 @@ const Container = styled.div`
                     flex-wrap: nowrap;
                     border: none;
                     border-radius: 5px;
+                    margin: .5rem;
+                    
                     background-image: linear-gradient(
                         to left,
                         #667eea,
@@ -90,6 +99,9 @@ const Container = styled.div`
                     color: white;
                     font-size: 1.1rem;
                     font-weight: 400;
+                    @media only screen and (max-width: 400px) {
+                        font-size: .9rem;
+                    }
                 }
             }
             &__info {
